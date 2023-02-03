@@ -15,11 +15,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:id="@+id/preview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
         <Button
             android:id="@+id/cancel"
             style="?android:attr/buttonBarButtonStyle"
@@ -38,5 +33,12 @@
             android:text="Recognize"
             android:onClick="rcognizePhoto"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="409dp"
+        android:layout_height="689dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
