@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/for_edit2"
+        android:hint="@string/newProductName"
+        android:padding="12dp"
+        android:textColorHint="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <androidx.appcompat.widget.AppCompatButton
+
+        android:id="@+id/save"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/deeded3"
+        android:textColor="@color/white"
+        android:text="Добавить продукт" />
+
+</LinearLayout>
