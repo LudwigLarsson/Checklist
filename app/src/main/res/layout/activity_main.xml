@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -35,8 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Scan"
-            android:onClick="toScanner"/>
+            android:text="Scan" />
 
         <Button
             android:id="@+id/add"
@@ -44,8 +43,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add"
-            android:onClick="addProduct"/>
+            android:text="Add" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

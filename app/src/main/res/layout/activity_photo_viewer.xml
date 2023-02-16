@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PhotoViewerActivity">
+    tools:context=".ui.PhotoViewerActivity">
 
     <LinearLayout
         android:id="@+id/buttons"
@@ -21,8 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel"
-            android:onClick="cancelPhoto"/>
+            android:text="Cancel" />
 
         <Button
             android:id="@+id/recognize"
@@ -31,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Recognize"
-            android:onClick="recognizePhoto"/>
+            />
     </LinearLayout>
 
     <ImageView

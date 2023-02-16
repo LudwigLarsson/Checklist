@@ -1,4 +1,4 @@
-package ru.samsung.case2022;
+package ru.samsung.case2022.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import ru.samsung.case2022.R;
 
 public class MyProductAdapter extends ArrayAdapter<String> {
 

@@ -1,4 +1,4 @@
-package ru.samsung.case2022;
+package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,11 +10,13 @@ import android.widget.Button;
 
 import java.util.List;
 
+import ru.samsung.case2022.R;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 
 public class MainActivity extends AppCompatActivity {
     private Button bt;
+    private Button bt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,13 @@ public class MainActivity extends AppCompatActivity {
                 toScanner();
             }
         });
+        bt1 = (Button) findViewById(R.id.add);
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addProduct();
+            }
+        });
     }
     public void toScanner() {
         // вызов камеры непонятно как
@@ -66,9 +75,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, PhotoViewerActivity.class);
         startActivity(intent);
     }
-//    public void addProduct() {
-//        Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
-//        startActivityForResult(intent, 1);
+    public void addProduct() {
+        Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+        startActivity(intent);
 //        public void onActivityResult(int requestCode, int resultCode, Intent data) {    //data - ?
 //            switch (resultCode) {
 //                case RESULT_OK:
@@ -76,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 //                    break;
 //            }
 //        }
-//    }
+    }
     public void editProduct() {
         Intent intent = new Intent(MainActivity.this, EditProductActivity.class);
         startActivity(intent);

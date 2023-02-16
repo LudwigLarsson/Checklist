@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProductActivity">
+    tools:context=".ui.EditProductActivity">
     <LinearLayout
         android:id="@+id/buttons"
         android:layout_width="0dp"
@@ -20,8 +20,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Save"
-            android:onClick="onSend"/>
+            android:text="Save" />
 
         <Button
             android:id="@+id/remove"
@@ -29,8 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Delete"
-            android:onClick="deleteProduct"/>
+            android:text="Delete" />
 
         <EditText
             android:id="@+id/editProductName"

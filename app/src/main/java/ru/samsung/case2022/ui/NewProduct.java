@@ -1,4 +1,4 @@
-package ru.samsung.case2022;
+package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import ru.samsung.case2022.R;
 
 public class NewProduct extends AppCompatActivity {
 

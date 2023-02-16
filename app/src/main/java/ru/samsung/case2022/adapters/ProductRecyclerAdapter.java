@@ -1,4 +1,4 @@
-package ru.samsung.case2022;
+package ru.samsung.case2022.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import ru.samsung.case2022.R;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private LayoutInflater inflater;
