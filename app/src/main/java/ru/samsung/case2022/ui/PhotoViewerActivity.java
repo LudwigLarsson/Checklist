@@ -65,7 +65,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
 
     }
     public void recognizePhoto() {
-        // todo Next Activity (ML)
+        // to do Next Activity (ML)
 
     }
 }

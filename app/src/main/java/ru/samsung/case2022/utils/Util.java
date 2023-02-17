@@ -8,4 +8,5 @@ public class Util {
     public static final String KEY_ID = "products";
     public static final String KEY_NAME = "name";
     public static final String KEY_CATEGORY = "category";
+    public static int changeI = 0;
 }

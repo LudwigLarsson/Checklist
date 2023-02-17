@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import ru.samsung.case2022.R;
 import ru.samsung.case2022.adapters.ProductRecyclerAdapter;
-
 public class RecycleShow extends AppCompatActivity {
     private RecyclerView rvProduct;
 
@@ -35,7 +34,8 @@ public class RecycleShow extends AppCompatActivity {
         butScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //scan text
+                Intent intent=new Intent(RecycleShow.this, PhotoViewerActivity.class);
+                startActivity(intent);
             }
         });
         rvProduct = findViewById(R.id.recycle);

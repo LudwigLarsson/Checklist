@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import ru.samsung.case2022.R;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -51,13 +53,17 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
 
         try {
-
-            ((MyHolder) holder).productName.setText("qwerty");
+            DataBaseHandler bd = new DataBaseHandler(this.context);
+            ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+            Products p = products.get(position);
+            ((MyHolder) holder).productName.setText(p.getName());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Util.changeI = p.getId();
+                    Intent intent=new Intent(context, ChangeProduct.class);
+                    context.startActivity(intent);
                 }
             });
         } catch (Exception e) {
@@ -71,7 +77,8 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public int getItemCount() {
 
-
-        return 1;
+        DataBaseHandler bd = new DataBaseHandler(this.context);
+        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+        return products.size();
     }
 }
