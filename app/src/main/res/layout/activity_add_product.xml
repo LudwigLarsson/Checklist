@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.AddProductActivity">
 
+    <EditText
+        android:id="@+id/editProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/for_edit2"
+        android:hint="@string/newProductName"
+        android:padding="12dp"
+        android:textColorHint="@color/black"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/buttons"
         android:layout_width="0dp"

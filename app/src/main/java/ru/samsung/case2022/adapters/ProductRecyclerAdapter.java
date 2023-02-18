@@ -1,6 +1,7 @@
 package ru.samsung.case2022.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import ru.samsung.case2022.R;
+import ru.samsung.case2022.data.DataBaseHandler;
+import ru.samsung.case2022.model.Products;
+import ru.samsung.case2022.ui.EditProduct;
+import ru.samsung.case2022.utils.Util;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private LayoutInflater inflater;
@@ -62,7 +67,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
                     Util.changeI = p.getId();
-                    Intent intent=new Intent(context, ChangeProduct.class);
+                    Intent intent=new Intent(context, EditProduct.class);
                     context.startActivity(intent);
                 }
             });

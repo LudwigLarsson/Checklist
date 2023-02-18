@@ -1,4 +1,4 @@
-package com.example.mcvfttfuvcwec;
+package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class ChangeProduct extends AppCompatActivity {
+import ru.samsung.case2022.R;
+import ru.samsung.case2022.data.DataBaseHandler;
+import ru.samsung.case2022.model.Products;
+import ru.samsung.case2022.utils.Util;
+
+
+public class EditProduct extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +28,10 @@ public class ChangeProduct extends AppCompatActivity {
         butRename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataBaseHandler dataBaseHandler = new DataBaseHandler(ChangeProduct.this);
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(EditProduct.this);
 
                 dataBaseHandler.updateProd(new Products(t.getText().toString()), Util.changeI);
-                Intent intent=new Intent(ChangeProduct.this, RecycleShow.class);
+                Intent intent=new Intent(EditProduct.this, RecycleShow.class);
                 startActivity(intent);
 
                 //
@@ -34,11 +40,11 @@ public class ChangeProduct extends AppCompatActivity {
         butDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataBaseHandler dataBaseHandler = new DataBaseHandler(ChangeProduct.this);
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(EditProduct.this);
 
                 dataBaseHandler.deleteProd(Util.changeI);
 
-                Intent intent=new Intent(ChangeProduct.this, RecycleShow.class);
+                Intent intent=new Intent(EditProduct.this, RecycleShow.class);
                 startActivity(intent);
                 //
             }

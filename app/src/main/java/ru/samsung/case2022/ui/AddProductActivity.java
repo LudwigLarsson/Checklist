@@ -1,4 +1,4 @@
-package com.example.mcvfttfuvcwec;
+package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,20 +8,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class NewProduct extends AppCompatActivity {
+import ru.samsung.case2022.R;
+import ru.samsung.case2022.data.DataBaseHandler;
+import ru.samsung.case2022.model.Products;
+
+public class AddProductActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_product);
-        EditText t = findViewById(R.id.editProductName);
+        setContentView(R.layout.activity_add_product);
+        EditText t = (EditText) findViewById(R.id.editProduct);
         Button butAdd = findViewById(R.id.save);
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataBaseHandler dataBaseHandler = new DataBaseHandler(NewProduct.this);
+                DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
                 dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy"));
-                Intent intent=new Intent(NewProduct.this, RecycleShow.class);
+                Intent intent=new Intent(AddProductActivity.this, RecycleShow.class);
                 startActivity(intent);
                 //
             }

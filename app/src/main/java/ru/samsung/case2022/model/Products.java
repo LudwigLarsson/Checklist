@@ -8,6 +8,9 @@ public class Products {
     //START Добавляем конструкторы в класс
     public Products() {
     }
+    public Products(String name){
+        this.name = name;
+    }
     public Products(int id, String name, String category) {
         this.id = id;
         this.name = name;

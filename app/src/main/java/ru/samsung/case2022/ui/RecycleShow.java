@@ -25,7 +25,7 @@ public class RecycleShow extends AppCompatActivity {
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(RecycleShow.this, NewProduct.class);
+                Intent intent=new Intent(RecycleShow.this, MainActivity.class);
                 startActivity(intent);
             }
         });

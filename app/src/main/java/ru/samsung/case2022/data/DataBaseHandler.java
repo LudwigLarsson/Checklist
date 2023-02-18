@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.samsung.case2022.model.Products;
+import ru.samsung.case2022.utils.Util;
+
 
 public class DataBaseHandler extends SQLiteOpenHelper {
 
