@@ -81,9 +81,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
 
     //Tensorflow Lite
-    implementation 'org.tensorflow:tensorflow-lite-task-vision:0.4.0'
-    implementation 'org.tensorflow:tensorflow-lite-gpu:2.9.0'
-    implementation 'org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0' //
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0' //
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'

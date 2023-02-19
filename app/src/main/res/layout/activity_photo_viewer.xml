@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/cancel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -25,16 +25,28 @@
             android:text="Cancel"
             android:textColor="@color/black" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/recognize"
-
             android:layout_width="6dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/button1"
             android:text="Recognize"
             android:textColor="@color/black" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/classify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="30dp"
+        tools:layout_editor_absoluteX="183dp"
+        tools:layout_editor_absoluteY="592dp" />
 
     <ImageView
         android:id="@+id/preview"
@@ -44,6 +56,7 @@
         app:layout_constraintBottom_toTopOf="@+id/buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
