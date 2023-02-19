@@ -77,8 +77,12 @@ public class PhotoViewerActivity extends AppCompatActivity {
         bt.setOnClickListener(v -> {
             cancelPhoto();
         });
+        buclassify.setOnClickListener(view ->{
+            recognizePhoto();
+        });
     }
     // after doing photo
+    /*
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -91,15 +95,14 @@ public class PhotoViewerActivity extends AppCompatActivity {
             MediaStore.Images.Media.insertImage(this.getContentResolver(), bitmap, "a", "h");
         }
     }
+    */
     public void getPhoto() {
-
         Bundle extras = getIntent().getExtras();
         byte[] byteArray = extras.getByteArray("picture");
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         iv = (ImageView) findViewById(R.id.preview);
-
         iv.setImageBitmap(bmp);
-
+        bitmap = bmp;
     }
     public void cancelPhoto() {
         // delete photo
@@ -114,11 +117,6 @@ public class PhotoViewerActivity extends AppCompatActivity {
         }catch (Exception e) {
             e.printStackTrace();
         }
-
-        buclassify.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
                 int imageTensorIndex = 0;
                 int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, height, width, 3}
                 imageSizeY = imageShape[1];
@@ -136,8 +134,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
                 inputImageBuffer = loadImage(bitmap);
                 tflite.run(inputImageBuffer.getBuffer(),outputProbabilityBuffer.getBuffer().rewind());
                 showresult();
-            }
-        });
+        finish();
     }
 
     private TensorImage loadImage(final Bitmap bitmap) {
