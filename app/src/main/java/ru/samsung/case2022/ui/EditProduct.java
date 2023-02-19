@@ -21,7 +21,7 @@ public class EditProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_product);
         EditText t = findViewById(R.id.editOldProductName);
-        Button butRename = findViewById(R.id.saveProduct);
+        Button butRename = findViewById(R.id.save);
         Button butDel = findViewById(R.id.remove);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
         t.setText(dataBaseHandler.getProd(Util.changeI).getName());

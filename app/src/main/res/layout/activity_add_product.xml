@@ -4,7 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#74E3F1"
     tools:context=".ui.AddProductActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="412dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:background="#BBDEFB"
+        android:gravity="center"
+        android:text="Добавление продукта"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/editProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
 
     <EditText
         android:id="@+id/editProduct"
@@ -20,29 +39,28 @@
         app:layout_constraintBottom_toTopOf="@+id/buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:autofillHints="k" />
 
     <LinearLayout
         android:id="@+id/buttons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="402dp"
+        android:layout_height="69dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save"
-            style="?android:attr/buttonBarButtonStyle"
+
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/button1"
             android:text="Save" />
 
-        <EditText
-            android:id="@+id/editProductName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

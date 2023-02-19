@@ -17,7 +17,7 @@ import ru.samsung.case2022.adapters.ProductRecyclerAdapter;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 
-public class MainActivity extends AppCompatActivity {
+public class RootActivity extends AppCompatActivity {
     private Button bt;
     private Button bt1;
 
@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
         //dataBaseHandler.deleteProd(deleteProd);
 
         //Вывод списка продуктов в консоль
-        for (Products products : productsList){
-            Log.d("Products info: ", "ID" + products.getId() + " , Name - " + products.getName() + ", Category - " + products.getCategory());
-        }
+//        for (Products products : productsList){
+//            Log.d("Products info: ", "ID" + products.getId() + " , Name - " + products.getName() + ", Category - " + products.getCategory());
+//        }
 
         //Смена каких-либо характеристик продукта
         //Products products = dataBaseHandler.getProd(2);
@@ -80,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
         // вызов камеры непонятно как
         // допустим, сюда передаётся фото
         // надо его кешировать и передать ссылку/id в PhotoViewerActivity
-        Intent intent = new Intent(MainActivity.this, PhotoViewerActivity.class);
+        Intent intent = new Intent(RootActivity.this, PhotoViewerActivity.class);
         startActivity(intent);
     }
     public void addProduct() {
-        Intent intent = new Intent(MainActivity.this, AddProductActivity.class);
+        Intent intent = new Intent(RootActivity.this, AddProductActivity.class);
         startActivity(intent);
 //        public void onActivityResult(int requestCode, int resultCode, Intent data) {    //data - ?
 //            switch (resultCode) {
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
     public void editProduct() {
-        Intent intent = new Intent(MainActivity.this, EditProduct.class);
+        Intent intent = new Intent(RootActivity.this, EditProduct.class);
         startActivity(intent);
     }
 }

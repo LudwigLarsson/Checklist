@@ -42,6 +42,9 @@ public class PhotoViewerActivity extends AppCompatActivity {
         if (requestCode == NORM){Bundle extras = data.getExtras();
             Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
             iv.setImageBitmap(thumbnailBitmap);
+            iv.setDrawingCacheEnabled(true);
+            Bitmap b = iv.getDrawingCache();
+            MediaStore.Images.Media.insertImage(this.getContentResolver(), b, "a", "h");
 
         }
     }
@@ -60,7 +63,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
     public void cancelPhoto() {
         // delete photo
         iv.setImageDrawable(null);
-        Intent intent = new Intent(PhotoViewerActivity.this, MainActivity.class);
+        Intent intent = new Intent(PhotoViewerActivity.this, RootActivity.class);
         startActivity(intent);
 
     }

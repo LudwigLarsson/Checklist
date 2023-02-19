@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.RootActivity">
 
     <EditText
         android:id="@+id/editProductName"

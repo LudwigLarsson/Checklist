@@ -4,44 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#74E3F1"
     tools:context=".ui.PhotoViewerActivity">
 
     <LinearLayout
         android:id="@+id/buttons"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="407dp"
+        android:layout_height="64dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/cancel"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/deeded3"
-            android:textColor="@color/black"
-            android:text="Cancel" />
+            android:background="@drawable/button1"
+            android:text="Cancel"
+            android:textColor="@color/black" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/recognize"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+
+            android:layout_width="6dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/deeded3"
-            android:textColor="@color/black"
+            android:background="@drawable/button1"
             android:text="Recognize"
-            />
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <ImageView
         android:id="@+id/preview"
-        android:layout_width="409dp"
-        android:layout_height="689dp"
+        android:layout_width="273dp"
+        android:layout_height="357dp"
+        android:layout_marginBottom="96dp"
         app:layout_constraintBottom_toTopOf="@+id/buttons"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
