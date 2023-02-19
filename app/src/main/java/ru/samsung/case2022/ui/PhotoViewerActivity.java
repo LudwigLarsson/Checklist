@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_viewer);
         getPhoto();
+
         bt = findViewById(R.id.cancel);
         bt.setOnClickListener(v -> {
             cancelPhoto();
@@ -35,27 +37,27 @@ public class PhotoViewerActivity extends AppCompatActivity {
 
     }
     // after doing photo
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        iv = (ImageView) findViewById(R.id.preview);
-        if (requestCode == NORM){Bundle extras = data.getExtras();
-            Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
-            iv.setImageBitmap(thumbnailBitmap);
-            iv.setDrawingCacheEnabled(true);
-            Bitmap b = iv.getDrawingCache();
-            MediaStore.Images.Media.insertImage(this.getContentResolver(), b, "a", "h");
-
-        }
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        iv = (ImageView) findViewById(R.id.preview);
+//        if (requestCode == NORM){Bundle extras = data.getExtras();
+//            Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
+//            iv.setImageBitmap(thumbnailBitmap);
+//            iv.setDrawingCacheEnabled(true);
+//            Bitmap b = iv.getDrawingCache();
+//            MediaStore.Images.Media.insertImage(this.getContentResolver(), b, "a", "h");
+//
+//        }
+//    }
     public void getPhoto() {
 
-        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        try{
-            startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
-        }catch (ActivityNotFoundException e){
-            e.printStackTrace();
-        }
+        Bundle extras = getIntent().getExtras();
+        byte[] byteArray = extras.getByteArray("picture");
+        Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        iv = (ImageView) findViewById(R.id.preview);
+
+        iv.setImageBitmap(bmp);
 
 
 

@@ -18,7 +18,7 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-        EditText t = (EditText) findViewById(R.id.editProduct);
+        EditText t = (EditText) findViewById(R.id.editProductName);
         Button butAdd = findViewById(R.id.save);
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override

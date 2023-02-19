@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import ru.samsung.case2022.R;
@@ -20,6 +26,8 @@ import ru.samsung.case2022.model.Products;
 public class RootActivity extends AppCompatActivity {
     private Button bt;
     private Button bt1;
+    private static final int NORM = 1;
+    private static final int REQUEST_TAKE_PHOTO = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +67,12 @@ public class RootActivity extends AppCompatActivity {
         //Log.d("Products info: ", "ID" + products.getId() + " , Name - " + products.getName() + ", Category - " + products.getCategory());
 
 
-
-
         bt = (Button) findViewById(R.id.scan);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toScanner();
+                getPhoto();
+
             }
         });
         bt1 = (Button) findViewById(R.id.add);
@@ -76,6 +83,26 @@ public class RootActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == NORM){Bundle extras = data.getExtras();
+//            Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
+//            Intent intent = new Intent(this, PhotoViewerActivity.class);
+//            intent.putExtra("BitmapImage", thumbnailBitmap);
+//            startActivity(intent);
+
+            Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            thumbnailBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            Intent intent = new Intent(this, PhotoViewerActivity.class);
+            intent.putExtra("picture", byteArray);
+            startActivity(intent);
+        }
+    }
+
     public void toScanner() {
         // вызов камеры непонятно как
         // допустим, сюда передаётся фото
@@ -83,6 +110,7 @@ public class RootActivity extends AppCompatActivity {
         Intent intent = new Intent(RootActivity.this, PhotoViewerActivity.class);
         startActivity(intent);
     }
+
     public void addProduct() {
         Intent intent = new Intent(RootActivity.this, AddProductActivity.class);
         startActivity(intent);
@@ -94,8 +122,19 @@ public class RootActivity extends AppCompatActivity {
 //            }
 //        }
     }
+
     public void editProduct() {
         Intent intent = new Intent(RootActivity.this, EditProduct.class);
         startActivity(intent);
+    }
+
+    public void getPhoto() {
+
+        Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        try {
+            startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
