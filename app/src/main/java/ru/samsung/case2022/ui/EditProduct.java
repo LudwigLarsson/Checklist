@@ -16,7 +16,7 @@ import ru.samsung.case2022.utils.Util;
 
 
 public class EditProduct extends AppCompatActivity {
-
+    // активность по изменению продукта
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +29,13 @@ public class EditProduct extends AppCompatActivity {
         butRename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // изменяем продукт в бд
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(EditProduct.this);
-
                 dataBaseHandler.updateProd(new Products(t.getText().toString()), Util.changeI);
+                // переходим обратно в ресайкл
                 Intent intent=new Intent(EditProduct.this, RootActivity.class);
                 startActivity(intent);
 
-                //
             }
         });
         butDel.setOnClickListener(new View.OnClickListener() {

@@ -13,7 +13,7 @@ import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 
 public class AddProductActivity extends AppCompatActivity {
-
+    // активность по добавления продуктов
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,12 +23,14 @@ public class AddProductActivity extends AppCompatActivity {
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // добавляем продукт в бд
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
                 dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy"));
+                // переходим обратно в ресайкл
                 Intent intent=new Intent(AddProductActivity.this, RootActivity.class);
                 startActivity(intent);
                 finish();
-                //
+
             }
         });
     }

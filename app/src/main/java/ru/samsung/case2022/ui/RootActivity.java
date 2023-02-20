@@ -130,7 +130,7 @@ public class RootActivity extends AppCompatActivity {
     }
 
     public void getPhoto() {
-
+        // получает фото
         Intent takePhotoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         try {
             startActivityForResult(takePhotoIntent, REQUEST_TAKE_PHOTO);
