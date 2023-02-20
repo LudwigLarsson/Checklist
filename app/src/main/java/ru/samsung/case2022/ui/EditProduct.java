@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,7 +32,7 @@ public class EditProduct extends AppCompatActivity {
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(EditProduct.this);
 
                 dataBaseHandler.updateProd(new Products(t.getText().toString()), Util.changeI);
-                Intent intent=new Intent(EditProduct.this, RecycleShow.class);
+                Intent intent=new Intent(EditProduct.this, RootActivity.class);
                 startActivity(intent);
 
                 //
@@ -44,7 +45,7 @@ public class EditProduct extends AppCompatActivity {
 
                 dataBaseHandler.deleteProd(Util.changeI);
 
-                Intent intent=new Intent(EditProduct.this, RecycleShow.class);
+                Intent intent=new Intent(EditProduct.this, RootActivity.class);
                 startActivity(intent);
                 //
             }

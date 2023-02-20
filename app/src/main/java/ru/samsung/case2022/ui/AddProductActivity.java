@@ -25,8 +25,9 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View v) {
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
                 dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy"));
-                Intent intent=new Intent(AddProductActivity.this, RecycleShow.class);
+                Intent intent=new Intent(AddProductActivity.this, RootActivity.class);
                 startActivity(intent);
+                finish();
                 //
             }
         });
