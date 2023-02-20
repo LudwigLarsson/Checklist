@@ -4,37 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#74E3F1"
+    android:background="#E4DADA"
     tools:context=".ui.PhotoViewerActivity">
 
     <LinearLayout
         android:id="@+id/buttons"
-        android:layout_width="407dp"
-        android:layout_height="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button1"
-            android:text="Cancel"
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/recognize"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/deeded3"
+            android:text="recognize"
             android:textColor="@color/black" />
 
-        <Button
-            android:id="@+id/recognize"
-            android:layout_width="6dp"
+        <androidx.appcompat.widget.AppCompatButton
+
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/button1"
-            android:text="Recognize"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/deeded3"
+            android:text="cancel"
             android:textColor="@color/black" />
+
 
     </LinearLayout>
+
+
 
     <TextView
         android:id="@+id/classify"

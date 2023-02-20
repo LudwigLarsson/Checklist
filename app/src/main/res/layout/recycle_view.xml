@@ -56,7 +56,7 @@ android:background="@color/main_color">
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle"
+        android:id="@+id/recycler"
         app:layoutManager="LinearLayoutManager"
         android:layout_width="match_parent"
         android:layout_height="0dp"

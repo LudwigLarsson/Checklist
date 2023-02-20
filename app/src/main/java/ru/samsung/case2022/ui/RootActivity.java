@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -32,7 +33,7 @@ public class RootActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.recycle_view);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this);
