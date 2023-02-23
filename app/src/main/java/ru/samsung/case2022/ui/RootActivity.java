@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.button.MaterialButton;
+
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
@@ -37,6 +39,8 @@ public class RootActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_view);
+        MaterialButton buttAdd= (MaterialButton) findViewById(R.id.add);
+        MaterialButton buttScan= (MaterialButton) findViewById(R.id.scan);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this);
@@ -71,16 +75,14 @@ public class RootActivity extends AppCompatActivity {
         //Log.d("Products info: ", "ID" + products.getId() + " , Name - " + products.getName() + ", Category - " + products.getCategory());
 
 
-        bt = (Button) findViewById(R.id.scan);
-        bt.setOnClickListener(new View.OnClickListener() {
+        buttScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getPhoto();
 
             }
         });
-        bt1 = (Button) findViewById(R.id.add);
-        bt1.setOnClickListener(new View.OnClickListener() {
+        buttAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addProduct();

@@ -10,8 +10,6 @@
                 android:thickness="0dp"
                 android:shape="rectangle">
                 <corners android:radius="25dp"/>
-                <stroke android:width="2dp"
-                    android:color="#F44336"/>
                 <corners android:radius="5dp" />
                 <solid android:color="#FFFFFF"/>
             </shape>

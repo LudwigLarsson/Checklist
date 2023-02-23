@@ -23,12 +23,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SamsungCase2022"
+        android:theme="@style/Theme.MaterialComponents"
         tools:targetApi="31">
         <activity
             android:name=".ui.PhotoViewerActivity"
             android:parentActivityName=".ui.RootActivity"
-            android:theme="@style/Theme.Design.NoActionBar"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -36,7 +36,7 @@
         </activity>
         <activity
             android:name=".ui.EditProduct"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog"
+            android:theme="@style/Theme.MaterialComponents.DayNight.Dialog"
             android:label=""
             android:exported="false">
             <meta-data
@@ -45,7 +45,7 @@
         </activity>
         <activity
             android:name=".ui.AddProductActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.Dialog"
+            android:theme="@style/Theme.MaterialComponents.DayNight.Dialog"
             android:label=""
             android:exported="false">
             <meta-data
@@ -55,7 +55,7 @@
         <activity
             android:name=".ui.RootActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -34,8 +34,8 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:background="@drawable/deeded5"
-            android:textColor="@color/white"
-            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:textStyle="normal"
             android:textSize="14dp"
             android:text="Сохранить" />
 
