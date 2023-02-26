@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -70,7 +72,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_viewer);
-        getPhoto();
+        setPhoto();
         buclassify=findViewById(R.id.recognize);
         classitext=findViewById(R.id.classify);
         bt = findViewById(R.id.cancel);
@@ -96,13 +98,25 @@ public class PhotoViewerActivity extends AppCompatActivity {
         }
     }
     */
-    public void getPhoto() {
+    public void setPhoto() {
         Bundle extras = getIntent().getExtras();
         byte[] byteArray = extras.getByteArray("picture");
         Bitmap bmp = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         iv = (ImageView) findViewById(R.id.preview);
         iv.setImageBitmap(bmp);
         bitmap = bmp;
+    }
+    public Bitmap getPhoto(){
+        ImageView iv = (ImageView) findViewById(R.id.preview);
+        iv.buildDrawingCache();
+        //Bitmap bitmap = iv1.getDrawingCache();
+        BitmapDrawable drawable = (BitmapDrawable) iv.getDrawable();
+        Bitmap bitmap = drawable.getBitmap();
+
+        Bitmap bt = Bitmap.createBitmap(bitmap, 0, (int) (bitmap.getHeight() * 0.35), 667, 200);
+
+        return bt;
+
     }
     public void cancelPhoto() {
         // delete photo
@@ -122,6 +136,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
                 imageSizeY = imageShape[1];
                 imageSizeX = imageShape[2];
                 DataType imageDataType = tflite.getInputTensor(imageTensorIndex).dataType();
+                bitmap = getPhoto();
 
                 int probabilityTensorIndex = 0;
                 int[] probabilityShape =
