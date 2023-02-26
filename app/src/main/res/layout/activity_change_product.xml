@@ -5,16 +5,6 @@
     android:background="#E4DADA"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="375dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginLeft="20dp"
-        android:text="Редактирование продукта"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="normal" />
-
     <EditText
         android:id="@+id/editProductName"
         android:layout_width="match_parent"

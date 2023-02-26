@@ -42,21 +42,28 @@ android:background="@color/white">
         android:layout_alignParentRight="true"
         android:layout_height="60dp"
         android:layout_marginBottom="20dp"
+        android:background="@android:color/transparent"
         android:layout_marginRight="20dp"
         app:icon="@drawable/add"
+        app:iconTint="@null"
+        app:iconGravity="top"
+        app:iconSize="50dp"
         app:strokeWidth="1dp" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/scan"
         style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="60dp"
+        android:id="@+id/scan"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:layout_height="60dp"
         android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:icon="@drawable/scan"
-        app:strokeWidth="1dp" />
+        android:background="@android:color/transparent"
+        app:iconSize="50dp"
+        app:iconGravity="top"
+        app:iconTint="@null"
+        app:icon="@drawable/scan" />
 
 
 </RelativeLayout>

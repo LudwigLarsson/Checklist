@@ -37,7 +37,7 @@
         <activity
             android:name=".ui.EditProduct"
             android:theme="@style/Theme.MaterialComponents.DayNight.Dialog"
-            android:label=""
+            android:label="Редактирование продукта"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -46,7 +46,7 @@
         <activity
             android:name=".ui.AddProductActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.Dialog"
-            android:label=""
+            android:label="Добавление продукта"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
