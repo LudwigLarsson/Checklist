@@ -80,6 +80,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
             cancelPhoto();
         });
         buclassify.setOnClickListener(view ->{
+            //iv.setImageDrawable(getResources().getDrawable(R.drawable.photo1));
             recognizePhoto();
         });
     }
