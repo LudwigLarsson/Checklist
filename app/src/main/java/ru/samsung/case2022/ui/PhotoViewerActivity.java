@@ -113,7 +113,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
         BitmapDrawable drawable = (BitmapDrawable) iv.getDrawable();
         Bitmap bitmap = drawable.getBitmap();
 
-        Bitmap bt = Bitmap.createBitmap(bitmap, 0, (int) (bitmap.getHeight() * 0.35), 667, 200);
+        Bitmap bt = Bitmap.createBitmap(bitmap, 0, (int) (bitmap.getHeight() * 0.35), (int) (bitmap.getWidth() * 0.926), (int) (bitmap.getHeight() * 0.156));
 
         return bt;
 
