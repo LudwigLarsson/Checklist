@@ -15,7 +15,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/recognize"
@@ -74,7 +73,7 @@
         app:layout_constraintEnd_toEndOf="@+id/preview"
         app:layout_constraintStart_toStartOf="@+id/preview"
         app:layout_constraintTop_toTopOf="@+id/preview"
-        app:layout_constraintVertical_bias="0.397"></ImageView>
+        app:layout_constraintVertical_bias="0.397" />
 
     <TextView
         app:layout_constraintBottom_toTopOf="@+id/preview"

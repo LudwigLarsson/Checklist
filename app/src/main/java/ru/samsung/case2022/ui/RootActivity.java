@@ -30,8 +30,7 @@ import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 
 public class RootActivity extends AppCompatActivity {
-    private Button bt;
-    private Button bt1;
+
     private static final int NORM = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
 
@@ -41,6 +40,7 @@ public class RootActivity extends AppCompatActivity {
         setContentView(R.layout.recycle_view);
         MaterialButton buttAdd= (MaterialButton) findViewById(R.id.add);
         MaterialButton buttScan= (MaterialButton) findViewById(R.id.scan);
+        MaterialButton buttClear= (MaterialButton) findViewById(R.id.clear);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this);
@@ -79,7 +79,6 @@ public class RootActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getPhoto();
-
             }
         });
         buttAdd.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +87,14 @@ public class RootActivity extends AppCompatActivity {
                 addProduct();
             }
         });
+        buttClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dataBaseHandler.deleteAll();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
     }
 
 
@@ -118,6 +125,9 @@ public class RootActivity extends AppCompatActivity {
         // надо его кешировать и передать ссылку/id в PhotoViewerActivity
         Intent intent = new Intent(RootActivity.this, PhotoViewerActivity.class);
         startActivity(intent);
+    }
+    public void clear(){
+
     }
 
     public void addProduct() {

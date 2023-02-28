@@ -36,6 +36,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + Util.TABLE_NAME + ";");
         onCreate(sqLiteDatabase);
     }
+    //Удаление всех данных
+    public void deleteAll(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Util.TABLE_NAME, null, null);
+        db.close();
+    }
 
     //Добавление продукта
     public void addProd(Products products) {
