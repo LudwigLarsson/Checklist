@@ -15,6 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
+
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/recognize"
@@ -63,6 +64,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/rectimage"
+        android:layout_width="300dp"
+        android:layout_height="91dp"
+        android:src="@drawable/rect"
+        app:layout_constraintBottom_toBottomOf="@+id/preview"
+        app:layout_constraintEnd_toEndOf="@+id/preview"
+        app:layout_constraintStart_toStartOf="@+id/preview"
+        app:layout_constraintTop_toTopOf="@+id/preview"
+        app:layout_constraintVertical_bias="0.397"></ImageView>
 
     <TextView
         app:layout_constraintBottom_toTopOf="@+id/preview"

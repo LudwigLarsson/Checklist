@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -76,14 +80,18 @@ public class PhotoViewerActivity extends AppCompatActivity {
         buclassify=findViewById(R.id.recognize);
         classitext=findViewById(R.id.classify);
         bt = findViewById(R.id.cancel);
+
         bt.setOnClickListener(v -> {
             cancelPhoto();
         });
         buclassify.setOnClickListener(view ->{
-            //iv.setImageDrawable(getResources().getDrawable(R.drawable.photo1));
+            //iv.setImageDrawable(getResources().getDrawable(R.drawable.photo1)); for check
+            //iv.setImageBitmap(getPhoto()); for check
             recognizePhoto();
         });
     }
+
+
     // after doing photo
     /*
     @Override
@@ -99,6 +107,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
         }
     }
     */
+
     public void setPhoto() {
         Bundle extras = getIntent().getExtras();
         byte[] byteArray = extras.getByteArray("picture");
