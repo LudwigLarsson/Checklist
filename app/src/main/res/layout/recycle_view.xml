@@ -11,12 +11,12 @@ android:background="@color/white">
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
         android:gravity="left"
         android:text="Список покупок"
         android:textColor="@android:color/black"
@@ -24,11 +24,19 @@ android:background="@color/white">
         android:textStyle="normal" />
 
 
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/list"
+        android:iconifiedByDefault="false"
+        android:queryHint="Product"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/list"
+        android:layout_below="@+id/search"
         android:layout_above="@+id/add"
         android:layout_weight="1"
         android:padding="12dp"

@@ -1,6 +1,7 @@
 package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.SearchView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -22,9 +24,11 @@ import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.samsung.case2022.R;
+import ru.samsung.case2022.adapters.MyProductAdapter;
 import ru.samsung.case2022.adapters.ProductRecyclerAdapter;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
@@ -38,14 +42,21 @@ public class RootActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_view);
+
+        SearchView sv = (SearchView) findViewById(R.id.search);
         MaterialButton buttAdd= (MaterialButton) findViewById(R.id.add);
         MaterialButton buttScan= (MaterialButton) findViewById(R.id.scan);
         MaterialButton buttClear= (MaterialButton) findViewById(R.id.clear);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
+
+        DataBaseHandler bd = new DataBaseHandler(this);
+        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
-        ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this);
+        ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this, products);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
+
         adapter.notifyDataSetChanged();
 
         //Добавляем продукты в базу данных
@@ -73,6 +84,30 @@ public class RootActivity extends AppCompatActivity {
         //products.setCategory("Vegetables");
         //dataBaseHandler.updateProd(products);
         //Log.d("Products info: ", "ID" + products.getId() + " , Name - " + products.getName() + ", Category - " + products.getCategory());
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
+                ArrayList<Products> searchList = new ArrayList<>();
+                for (Products product : productsList){
+                    if (product.getName().toLowerCase().contains(newText.toLowerCase())){
+                        searchList.add(product);
+                    }
+                }
+                RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
+                ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(RootActivity.this, searchList);
+                rv.setAdapter(adapter);
+                rv.setLayoutManager(new LinearLayoutManager(RootActivity.this));
+                adapter.notifyDataSetChanged();
+                return false;
+            }
+        });
 
 
         buttScan.setOnClickListener(new View.OnClickListener() {

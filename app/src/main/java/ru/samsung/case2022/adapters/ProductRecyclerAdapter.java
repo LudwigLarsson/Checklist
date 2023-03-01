@@ -22,15 +22,16 @@ import ru.samsung.case2022.utils.Util;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private LayoutInflater inflater;
-
+    private ArrayList<Products> products;
     private Context context;
 
-    public ProductRecyclerAdapter(Context context) {
+    public ProductRecyclerAdapter(Context context, ArrayList<Products> products) {
         this.inflater = LayoutInflater.from(context);
-
+        this.products = products;
         this.context = context;
 
     }
+
 
     private class MyHolder extends RecyclerView.ViewHolder {
         private TextView productName;
@@ -43,6 +44,8 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         }
     }
+
+
 
     @NonNull
     @Override
@@ -57,10 +60,10 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
 
+
         try {
-            DataBaseHandler bd = new DataBaseHandler(this.context);
-            ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
-            Products p = products.get(position);
+
+            Products p = this.products.get(position);
             ((MyHolder) holder).productName.setText(p.getName());
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -86,4 +89,5 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
         return products.size();
     }
+
 }
