@@ -37,6 +37,7 @@
             android:background="@drawable/for_edit2"
             android:hint="@string/newProductCount"
             android:padding="12dp"
+            android:inputType="number"
             android:layout_marginBottom="30dp"
             android:textColorHint="@color/black"
             android:textSize="15sp"
