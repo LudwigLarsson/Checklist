@@ -37,7 +37,7 @@ public class RootActivity extends AppCompatActivity {
 
     private static final int NORM = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
-
+    ProductRecyclerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,13 +51,13 @@ public class RootActivity extends AppCompatActivity {
 
         DataBaseHandler bd = new DataBaseHandler(this);
         ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
-
+        adapter = new ProductRecyclerAdapter(this, products);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
-        ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(this, products);
+
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-        adapter.notifyDataSetChanged();
+
 
         //Добавляем продукты в базу данных
 
@@ -190,5 +190,9 @@ public class RootActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
         }
+    }
+    public void updateAdapter()
+    {
+        adapter.notifyDataSetChanged();
     }
 }

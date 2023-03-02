@@ -26,16 +26,19 @@ public class EditProduct extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_product);
         EditText t = findViewById(R.id.editProductName);
+        EditText t2 = findViewById(R.id.editProductCount);
         Button butRename = findViewById(R.id.save);
         Button butDel = findViewById(R.id.remove);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
         t.setText(dataBaseHandler.getProd(Util.changeI).getName());
+
+        t2.setText(String.valueOf(dataBaseHandler.getProd(Util.changeI).getCount()));
         butRename.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // изменяем продукт в бд
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(EditProduct.this);
-                dataBaseHandler.updateProd(new Products(t.getText().toString()), Util.changeI);
+                dataBaseHandler.updateProd(new Products(t.getText().toString(), Integer.parseInt(t2.getText().toString())), Util.changeI);
                 // переходим обратно в ресайкл
                 Intent intent=new Intent(EditProduct.this, RootActivity.class);
                 startActivity(intent);

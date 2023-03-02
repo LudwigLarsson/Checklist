@@ -5,20 +5,25 @@ public class Products {
     private String name;
     private String category;
 
+    private int count;
+
     //START Добавляем конструкторы в класс
     public Products() {
     }
-    public Products(String name){
+    public Products(String name, int count){
         this.name = name;
+        this.count = count;
     }
-    public Products(int id, String name, String category) {
+    public Products(int id, String name, String category, int count) {
         this.id = id;
         this.name = name;
         this.category = category;
+        this.count = count;
     }
-    public Products(String name, String category) {
+    public Products(String name, String category, int count) {
         this.name = name;
         this.category = category;
+        this.count = count;
     }
     //END Добавляем конструкторы в класс
 
@@ -32,6 +37,10 @@ public class Products {
     public String getName() {
         return name;
     }
+
+    public int getCount(){return count;}
+
+    public void setCount(int count){this.count = count;}
     public void setName(String name) {
         this.name = name;
     }

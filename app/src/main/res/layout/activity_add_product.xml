@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:background="#E4DADA"
     android:orientation="vertical">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <EditText
         android:id="@+id/editProductName"
         android:layout_width="match_parent"
@@ -17,15 +20,34 @@
         android:background="@drawable/for_edit2"
         android:hint="@string/newProductName"
         android:padding="12dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:textColorHint="@color/black"
         android:textSize="15sp"
         android:textStyle="italic" />
+
+        <EditText
+            android:id="@+id/editProductCount"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/for_edit2"
+            android:hint="@string/newProductCount"
+            android:padding="12dp"
+            android:layout_marginBottom="30dp"
+            android:textColorHint="@color/black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/save"
@@ -34,10 +56,10 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:background="@drawable/deeded5"
+            android:text="Сохранить"
             android:textColor="@color/black"
-            android:textStyle="normal"
             android:textSize="14dp"
-            android:text="Сохранить" />
+            android:textStyle="normal" />
 
 
     </LinearLayout>

@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">SamsungCase2022</string>
     <string name="newProductName">Введите название продукта</string>
+    <string name="newProductCount">Введите количество продуктов</string>
     <string name="edit">Редактирование продукта</string>
     <string-array name="statusRecycle">
         <item>Потерянные</item>

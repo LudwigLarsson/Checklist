@@ -25,7 +25,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         String CREATE_PRODUCTS_TABLE = "CREATE TABLE " + Util.TABLE_NAME + " ("
                 + Util.KEY_ID + " INTEGER PRIMARY KEY, "
                 + Util.KEY_NAME + " TEXT, "
-                + Util.KEY_CATEGORY + " TEXT" + " );";
+                + Util.KEY_CATEGORY + " TEXT, "
+                + Util.KEY_COUNT + " DOUBLE" + " );";
 
         sqLiteDatabase.execSQL(CREATE_PRODUCTS_TABLE);
     }
@@ -50,6 +51,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         contentValues.put(Util.KEY_NAME, products.getName());
         contentValues.put(Util.KEY_CATEGORY, products.getCategory());
+        contentValues.put(Util.KEY_COUNT, products.getCount());
 
         db.insert(Util.TABLE_NAME, null, contentValues);
         db.close();
@@ -58,7 +60,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     //Возвращает продукт нам
     public Products getProd(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(Util.TABLE_NAME, new String[]{Util.KEY_ID, Util.KEY_NAME, Util.KEY_CATEGORY},
+        Cursor cursor = db.query(Util.TABLE_NAME, new String[]{Util.KEY_ID, Util.KEY_NAME, Util.KEY_CATEGORY, Util.KEY_COUNT},
                 Util.KEY_ID + "=?", new String[]{String.valueOf(id)}, null, null, null, null);
         /*
         if (cursor != null){
@@ -67,7 +69,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         */
         while (cursor != null && cursor.moveToNext()) {
             Products products = new Products(Integer.parseInt(cursor.getString(0)),
-                    cursor.getString(1), cursor.getString(2));
+                    cursor.getString(1), cursor.getString(2), cursor.getInt(3));
             cursor.close();
             return products;
         }
@@ -91,6 +93,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
                 products.setId(Integer.parseInt(cursor.getString(0)));
                 products.setName(cursor.getString(1));
                 products.setCategory(cursor.getString(2));
+                products.setCount(cursor.getInt(3));
 
                 prodList.add(products);
             } while (cursor.moveToNext());
@@ -105,6 +108,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(Util.KEY_NAME, products.getName());
         contentValues.put(Util.KEY_CATEGORY, products.getCategory());
+        contentValues.put(Util.KEY_COUNT, products.getCount());
 
         return db.update(Util.TABLE_NAME, contentValues, Util.KEY_ID + "=?", new String[]{String.valueOf(id)});
     }

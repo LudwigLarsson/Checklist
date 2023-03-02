@@ -19,13 +19,14 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
         EditText t = (EditText) findViewById(R.id.editProductName);
+        EditText t2 = (EditText)findViewById(R.id.editProductCount);
         Button butAdd = findViewById(R.id.save);
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // добавляем продукт в бд
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
-                dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy"));
+                dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy", Integer.parseInt(t2.getText().toString())));
                 // переходим обратно в ресайкл
                 Intent intent=new Intent(AddProductActivity.this, RootActivity.class);
                 startActivity(intent);
