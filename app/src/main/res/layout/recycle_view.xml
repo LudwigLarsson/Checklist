@@ -11,12 +11,12 @@ android:background="@color/white">
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginVertical="20dp"
         android:gravity="left"
         android:text="Список покупок"
         android:textColor="@android:color/black"
@@ -28,9 +28,13 @@ android:background="@color/white">
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_below="@+id/list"
         android:iconifiedByDefault="false"
-        android:queryHint="Product"/>
+        android:queryHint="Поиск в списке"
+        android:background="@drawable/layout_bg"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
@@ -59,7 +63,7 @@ android:background="@color/white">
         app:strokeWidth="1dp" />
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="60dp"
+        android:layout_width="69dp"
         android:id="@+id/clear"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

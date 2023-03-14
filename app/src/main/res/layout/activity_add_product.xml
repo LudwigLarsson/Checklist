@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4DADA"
+    android:background="@drawable/layout_bg2"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,9 +56,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/deeded5"
+            android:background="@drawable/layout_bg"
             android:text="Сохранить"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="14dp"
             android:textStyle="normal" />
 

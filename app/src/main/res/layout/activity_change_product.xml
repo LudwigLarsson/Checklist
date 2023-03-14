@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E4DADA"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/layout_bg2">
+
 
     <EditText
         android:id="@+id/editProductName"
-        android:layout_width="match_parent"
+        android:layout_width="305dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
@@ -21,41 +22,43 @@
         android:textColorHint="@color/black"
         android:textSize="15sp"
         android:textStyle="italic" />
+
     <EditText
         android:id="@+id/editProductCount"
-        android:layout_width="match_parent"
-        android:textColor="@color/black"
+        android:layout_width="302dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="30dp"
-        android:inputType="number"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/for_edit2"
         android:hint="@string/newProductCount"
+        android:inputType="number"
         android:padding="12dp"
-        android:layout_marginBottom="30dp"
+        android:textColor="@color/black"
         android:textColorHint="@color/black"
         android:textSize="15sp"
         android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="60dp"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
 
             android:id="@+id/save"
             android:layout_width="120dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:background="@drawable/deeded5"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/layout_bg"
             android:text="Сохранить изменения"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="13dp"
             android:textStyle="normal" />
 
@@ -66,11 +69,12 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="30dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/deeded5"
+            android:background="@drawable/layout_bg"
             android:text="Удалить продукт"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="13dp"
             android:textStyle="normal" />
 

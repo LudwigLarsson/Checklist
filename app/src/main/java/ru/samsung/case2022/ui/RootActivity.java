@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.SearchView;
@@ -49,6 +50,7 @@ public class RootActivity extends AppCompatActivity {
         ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
         adapter = new ProductRecyclerAdapter(this, products);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
+        rv.setBackgroundColor(Color.parseColor("#f7f7f7"));
 
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
