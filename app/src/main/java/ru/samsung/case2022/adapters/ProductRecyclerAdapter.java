@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -30,7 +31,6 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         this.context = context;
 
     }
-
 
     private class MyHolder extends RecyclerView.ViewHolder {
         private TextView productName;

@@ -46,6 +46,7 @@ import java.util.Map;
 
 import ru.samsung.case2022.R;
 import ru.samsung.case2022.StateViewModel;
+import ru.samsung.case2022.adapters.ProductRecyclerAdapter;
 import ru.samsung.case2022.ui.main.Classifiers;
 
 public class PhotoViewerActivity extends AppCompatActivity {
@@ -56,6 +57,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
 
     // image
     private ImageView iv;
+    public RootActivity updateAdapter;
     private StateViewModel mViewModel;
     // Button
     private Button bt;
@@ -145,6 +147,8 @@ public class PhotoViewerActivity extends AppCompatActivity {
         recognition.recognize(this);
         recognition.classifyImage(bitmap);
         recognition.deleteProduct();
+        updateAdapter.updateAdapter();
+
         mViewModel.setStateUpdateLiveData("Update");
         finish();
     }

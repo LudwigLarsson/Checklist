@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -195,6 +196,7 @@ public class RootActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    @SuppressLint("NotifyDataSetChanged")
     public void updateAdapter()
     {
         adapter.notifyDataSetChanged();
