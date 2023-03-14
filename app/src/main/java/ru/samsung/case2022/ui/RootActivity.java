@@ -2,24 +2,18 @@ package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 //import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.Menu;
 import android.widget.SearchView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.google.android.material.button.MaterialButton;
 
@@ -27,8 +21,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.samsung.case2022.StateViewModel;
 import ru.samsung.case2022.R;
-import ru.samsung.case2022.adapters.MyProductAdapter;
 import ru.samsung.case2022.adapters.ProductRecyclerAdapter;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
@@ -38,6 +32,7 @@ public class RootActivity extends AppCompatActivity {
     private static final int NORM = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     ProductRecyclerAdapter adapter;
+    private StateViewModel mViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +52,15 @@ public class RootActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
+
+        mViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(StateViewModel.class);
+        mViewModel.getStateUpdateLiveData().observe(this, s -> {
+            if (s.equals("Update")) {
+                updateAdapter();
+                mViewModel.setStateUpdateLiveData("");
+            }
+        });
+        mViewModel.setStateUpdateLiveData("");
 
 
         //Добавляем продукты в базу данных
@@ -178,7 +182,7 @@ public class RootActivity extends AppCompatActivity {
     }
 
     public void editProduct() {
-        Intent intent = new Intent(RootActivity.this, EditProduct.class);
+        Intent intent = new Intent(RootActivity.this, EditProductActivity.class);
         startActivity(intent);
     }
 

@@ -24,10 +24,10 @@ public class AddProductActivity extends AppCompatActivity {
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // добавляем продукт в бд
+                // add product to database
                 DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
                 dataBaseHandler.addProd(new Products(t.getText().toString(),"Dairy", Integer.parseInt(t2.getText().toString())));
-                // переходим обратно в ресайкл
+                // Going back to mainactivity
                 Intent intent=new Intent(AddProductActivity.this, RootActivity.class);
                 startActivity(intent);
                 finish();

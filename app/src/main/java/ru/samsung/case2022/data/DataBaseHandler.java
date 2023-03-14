@@ -112,12 +112,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
         return db.update(Util.TABLE_NAME, contentValues, Util.KEY_ID + "=?", new String[]{String.valueOf(id)});
     }
-
     //Удаляет продукт
     public void deleteProd(long id) {
         SQLiteDatabase db = this.getWritableDatabase();
-
         db.delete(Util.TABLE_NAME, Util.KEY_ID + "=?", new String[]{String.valueOf(id)});
+        db.close();
+    }
+
+    public void deleteProduct(String proddel) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Util.TABLE_NAME, Util.KEY_NAME + "=?", new String[]{proddel});
         db.close();
     }
 

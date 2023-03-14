@@ -35,7 +35,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".ui.EditProduct"
+            android:name=".ui.EditProductActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.Dialog"
             android:label="Редактирование продукта"
             android:exported="false">
