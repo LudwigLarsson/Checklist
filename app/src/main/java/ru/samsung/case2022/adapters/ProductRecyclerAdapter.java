@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import ru.samsung.case2022.R;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 import ru.samsung.case2022.ui.EditProductActivity;
+import ru.samsung.case2022.ui.RootActivity;
 import ru.samsung.case2022.utils.Util;
 
 public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -34,11 +36,16 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     private class MyHolder extends RecyclerView.ViewHolder {
         private TextView productName;
+        private TextView prodKolvo;
+        private Button plus;
+
 
 
         public MyHolder(@NonNull View itemView) {
             super(itemView);
             productName = itemView.findViewById(R.id.productName);
+            prodKolvo = itemView.findViewById(R.id.prodKolvo);
+            plus = itemView.findViewById(R.id.plus);
 
 
         }
@@ -51,7 +58,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.adapter_item, parent, false);
 
-        Log.e("Point_2", "bvefhvb");
+
         return new MyHolder(view);
     }
 
@@ -64,7 +71,18 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
             Products p = this.products.get(position);
             ((MyHolder) holder).productName.setText(p.getName());
+            ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
+            ((MyHolder) holder).plus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer a = p.getCount() + 1;
+                    DataBaseHandler bd = new DataBaseHandler(context);
+                    bd.updateProd(new Products(p.getName(), a), p.getId());
+                    Log.e("ccc", String.valueOf(p.getCount()));
 
+                }
+            });
+            Log.e("mmm", String.valueOf(p.getCount()));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

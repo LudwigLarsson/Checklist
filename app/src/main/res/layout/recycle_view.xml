@@ -61,20 +61,22 @@ android:background="@color/white">
         app:iconGravity="top"
         app:iconSize="50dp"
         app:strokeWidth="1dp" />
+
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/clear"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="69dp"
-        android:id="@+id/clear"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_height="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="150dp"
+        android:layout_marginBottom="17dp"
         android:background="@android:color/transparent"
-        android:layout_marginRight="163dp"
+        android:gravity="center_vertical"
         app:icon="@drawable/clear"
-        app:iconTint="@null"
         app:iconGravity="top"
         app:iconSize="50dp"
+        app:iconTint="@null"
         app:strokeWidth="1dp" />
 
     <com.google.android.material.button.MaterialButton
