@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import ru.samsung.case2022.R;
 import ru.samsung.case2022.data.DataBaseHandler;
@@ -34,6 +35,12 @@ public class AddProductActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
+                }
+                else{
+                    String text = "Введите название и количество продукта";
+                    Toast.makeText(getApplicationContext(),
+                            text,
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
