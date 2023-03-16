@@ -71,16 +71,16 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
         try {
             Products p = this.products.get(position);
-            counter = p.getCount();
+            final int[] counter = {p.getCount()};
             ((MyHolder) holder).productName.setText(p.getName());
             ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
             ((MyHolder) holder).plus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    counter++;
+                    counter[0]++;
                     DataBaseHandler bd = new DataBaseHandler(context);
-                    bd.updateProd(new Products(p.getName(), counter), p.getId());
-                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
+                    bd.updateProd(new Products(p.getName(), counter[0]), p.getId());
+                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter[0]));
                     Log.e("ccc", String.valueOf(p.getCount()));
 
                 }
@@ -89,10 +89,10 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 @Override
                 public void onClick(View v) {
                     if (p.getCount() > 1) {
-                        counter--;
+                        counter[0]--;
                         DataBaseHandler bd = new DataBaseHandler(context);
-                        bd.updateProd(new Products(p.getName(), counter), p.getId());
-                        ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
+                        bd.updateProd(new Products(p.getName(), counter[0]), p.getId());
+                        ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter[0]));
                         Log.e("ddd", String.valueOf(p.getCount()));
                     }
 
