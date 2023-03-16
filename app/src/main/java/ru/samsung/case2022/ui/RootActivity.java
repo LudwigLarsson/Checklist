@@ -2,6 +2,7 @@ package ru.samsung.case2022.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 //import androidx.appcompat.widget.SearchView;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,15 +48,16 @@ public class RootActivity extends AppCompatActivity {
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
 
         DataBaseHandler bd = new DataBaseHandler(this);
-        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
-        adapter = new ProductRecyclerAdapter(this, products);
+        //ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+        LiveData<ArrayList<Products>> products = (LiveData<ArrayList<Products>>) bd.getAllProd();
+        adapter = new ProductRecyclerAdapter(this, products.getValue());
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setBackgroundColor(Color.parseColor("#f7f7f7"));
 
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
-
+/*
         mViewModel = new ViewModelProvider.AndroidViewModelFactory(getApplication()).create(StateViewModel.class);
         mViewModel.getStateUpdateLiveData().observe(this, s -> {
             if (s.equals("Update")) {
@@ -64,7 +66,10 @@ public class RootActivity extends AppCompatActivity {
             }
         });
         mViewModel.setStateUpdateLiveData("");
-
+*/
+        products.observe(this, s -> {
+                updateAdapter();
+        });
 
         //Добавляем продукты в базу данных
 
@@ -74,7 +79,7 @@ public class RootActivity extends AppCompatActivity {
 
         //Список всех продуктов за раз
 
-        List<Products> productsList = dataBaseHandler.getAllProd();
+        //List<Products> productsList = dataBaseHandler.getAllProd();
 
         //Удаляем какой-либо продукт по его id
         //Products deleteProd = dataBaseHandler.getProd();
@@ -100,9 +105,10 @@ public class RootActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
+                LiveData<ArrayList<Products>> productsList = (LiveData<ArrayList<Products>>) bd.getAllProd();
                 ArrayList<Products> searchList = new ArrayList<>();
-                for (Products product : productsList){
+                ArrayList<Products> updater = productsList.getValue();
+                for (Products product : updater){
                     if (product.getName().toLowerCase().contains(newText.toLowerCase())){
                         searchList.add(product);
                     }

@@ -57,7 +57,6 @@ public class PhotoViewerActivity extends AppCompatActivity {
 
     // image
     private ImageView iv;
-    public RootActivity updateAdapter;
     private StateViewModel mViewModel;
     // Button
     private Button bt;
@@ -147,9 +146,8 @@ public class PhotoViewerActivity extends AppCompatActivity {
         recognition.recognize(this);
         recognition.classifyImage(bitmap);
         recognition.deleteProduct();
-        updateAdapter.updateAdapter();
 
-        mViewModel.setStateUpdateLiveData("Update");
+        //mViewModel.setStateUpdateLiveData("Update");
         finish();
     }
 

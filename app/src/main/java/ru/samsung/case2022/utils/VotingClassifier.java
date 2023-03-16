@@ -56,7 +56,7 @@ public class VotingClassifier {
         HashMap<String, Float> map2 = hash.get(1);
         HashMap<String, Float> map3 = hash.get(2);
         HashMap<String, Float> newMap = new HashMap<>();
-        String maxKey = null;
+        String maxKey = " ";
         float maxValue = 0;
 
         // Summarize float values into newMap

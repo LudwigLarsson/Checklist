@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,10 +83,11 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     //Возвращает все продукты
-    public List<Products> getAllProd() {
+    public LiveData<ArrayList<Products>> getAllProd() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Products> prodList = new ArrayList<>();
+        MutableLiveData<ArrayList<Products>> prodListUpdate = new MutableLiveData<>();
         String selectAllProd = "Select * from " + Util.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(selectAllProd, null);
         if (cursor.moveToFirst()) {
@@ -99,7 +103,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         cursor.close();
-        return prodList;
+        prodListUpdate.setValue(prodList);
+        return prodListUpdate;
     }
 
     //Обновляет информацию о продукте

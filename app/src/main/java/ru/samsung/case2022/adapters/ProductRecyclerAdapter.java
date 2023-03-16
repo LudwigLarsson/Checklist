@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -120,8 +121,12 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
 
         DataBaseHandler bd = new DataBaseHandler(this.context);
-        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
-        return products.size();
+        LiveData<ArrayList<Products>> products = (LiveData<ArrayList<Products>>) bd.getAllProd();
+        if (products.getValue()!=null){
+            return products.getValue().size();
+        } else{
+            return 0;
+        }
     }
 
 }
