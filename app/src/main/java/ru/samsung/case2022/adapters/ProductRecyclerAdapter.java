@@ -117,9 +117,6 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-
-        DataBaseHandler bd = new DataBaseHandler(this.context);
-        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
         return products.size();
     }
 
