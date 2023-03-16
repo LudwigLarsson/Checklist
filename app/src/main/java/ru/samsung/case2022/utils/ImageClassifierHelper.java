@@ -75,7 +75,7 @@ public class ImageClassifierHelper {
             int currentModel
     ) {
         return new ImageClassifierHelper(
-                0.5f,
+                0.05f,
                 2,
                 3,
                 1, //todo change to 0
