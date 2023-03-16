@@ -27,7 +27,6 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private LayoutInflater inflater;
     private ArrayList<Products> products;
     private Context context;
-    private int counter = 0;
 
     public ProductRecyclerAdapter(Context context, ArrayList<Products> products) {
         this.inflater = LayoutInflater.from(context);
@@ -69,20 +68,16 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-
-
         try {
             Products p = this.products.get(position);
             ((MyHolder) holder).productName.setText(p.getName());
             ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
-            counter = p.getCount();
             ((MyHolder) holder).plus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    counter++;
                     DataBaseHandler bd = new DataBaseHandler(context);
-                    bd.updateProd(new Products(p.getName(), counter), p.getId());
-                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
+                    bd.updateProd(new Products(p.getName(), p.getCount() + 1), p.getId());
+                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
                     Log.e("ccc", String.valueOf(p.getCount()));
 
                 }
@@ -90,11 +85,10 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((MyHolder) holder).minus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    if (counter > 1) {
-                        counter--;
+                    if (p.getCount() > 1) {
                         DataBaseHandler bd = new DataBaseHandler(context);
-                        bd.updateProd(new Products(p.getName(), counter), p.getId());
-                        ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
+                        bd.updateProd(new Products(p.getName(), p.getCount() - 1), p.getId());
+                        ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
                         Log.e("ddd", String.valueOf(p.getCount()));
                     }
 
