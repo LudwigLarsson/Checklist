@@ -88,7 +88,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((MyHolder) holder).minus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    if (p.getCount() > 1) {
+                    if (counter[0] > 1) {
                         counter[0]--;
                         DataBaseHandler bd = new DataBaseHandler(context);
                         bd.updateProd(new Products(p.getName(), counter[0]), p.getId());
