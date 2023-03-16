@@ -48,9 +48,8 @@ public class RootActivity extends AppCompatActivity {
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
 
         DataBaseHandler bd = new DataBaseHandler(this);
-        //ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
-        LiveData<ArrayList<Products>> products = (LiveData<ArrayList<Products>>) bd.getAllProd();
-        adapter = new ProductRecyclerAdapter(this, products.getValue());
+        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+        adapter = new ProductRecyclerAdapter(this, products);
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         rv.setBackgroundColor(Color.parseColor("#f7f7f7"));
 
@@ -67,9 +66,9 @@ public class RootActivity extends AppCompatActivity {
         });
         mViewModel.setStateUpdateLiveData("");
 */
-        products.observe(this, s -> {
-                updateAdapter();
-        });
+        //products.observe(this, s -> {
+        //        updateAdapter();
+        //});
 
         //Добавляем продукты в базу данных
 
@@ -105,10 +104,9 @@ public class RootActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
 
-                LiveData<ArrayList<Products>> productsList = (LiveData<ArrayList<Products>>) bd.getAllProd();
+                ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
                 ArrayList<Products> searchList = new ArrayList<>();
-                ArrayList<Products> updater = productsList.getValue();
-                for (Products product : updater){
+                for (Products product : productsList){
                     if (product.getName().toLowerCase().contains(newText.toLowerCase())){
                         searchList.add(product);
                     }
@@ -208,5 +206,10 @@ public class RootActivity extends AppCompatActivity {
     public void updateAdapter()
     {
         adapter.notifyDataSetChanged();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAdapter();
     }
 }

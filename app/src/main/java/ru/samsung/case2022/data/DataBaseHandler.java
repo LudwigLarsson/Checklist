@@ -83,11 +83,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     }
 
     //Возвращает все продукты
-    public LiveData<ArrayList<Products>> getAllProd() {
+    public ArrayList<Products> getAllProd() {
 
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Products> prodList = new ArrayList<>();
-        MutableLiveData<ArrayList<Products>> prodListUpdate = new MutableLiveData<>();
         String selectAllProd = "Select * from " + Util.TABLE_NAME + ";";
         Cursor cursor = db.rawQuery(selectAllProd, null);
         if (cursor.moveToFirst()) {
@@ -103,8 +102,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         cursor.close();
-        prodListUpdate.setValue(prodList);
-        return prodListUpdate;
+        return prodList;
     }
 
     //Обновляет информацию о продукте

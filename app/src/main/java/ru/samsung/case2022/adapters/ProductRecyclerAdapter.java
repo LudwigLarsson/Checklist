@@ -119,12 +119,8 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
 
         DataBaseHandler bd = new DataBaseHandler(this.context);
-        LiveData<ArrayList<Products>> products = (LiveData<ArrayList<Products>>) bd.getAllProd();
-        if (products.getValue()!=null){
-            return products.getValue().size();
-        } else{
-            return 0;
-        }
+        ArrayList<Products> products = (ArrayList<Products>) bd.getAllProd();
+        return products.size();
     }
 
 }
