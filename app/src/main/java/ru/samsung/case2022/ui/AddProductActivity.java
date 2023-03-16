@@ -24,7 +24,7 @@ public class AddProductActivity extends AppCompatActivity {
         butAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(t.getText().length() != 0 && t.getText().length() != 0) {
+                if(t.getText().length() != 0 && t2.getText().length() != 0) {
                     if(Integer.parseInt(t2.getText().toString()) != 0) {
                         // добавляем продукт в бд
                         DataBaseHandler dataBaseHandler = new DataBaseHandler(AddProductActivity.this);
