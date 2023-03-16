@@ -26,6 +26,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private LayoutInflater inflater;
     private ArrayList<Products> products;
     private Context context;
+    private int counter = 0;
 
     public ProductRecyclerAdapter(Context context, ArrayList<Products> products) {
         this.inflater = LayoutInflater.from(context);
@@ -38,6 +39,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         private TextView productName;
         private TextView prodKolvo;
         private Button plus;
+        private Button minus;
 
 
 
@@ -46,6 +48,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             productName = itemView.findViewById(R.id.productName);
             prodKolvo = itemView.findViewById(R.id.prodKolvo);
             plus = itemView.findViewById(R.id.plus);
+            minus = itemView.findViewById(R.id.minus2);
 
 
         }
@@ -68,17 +71,31 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
 
         try {
-
             Products p = this.products.get(position);
             ((MyHolder) holder).productName.setText(p.getName());
             ((MyHolder) holder).prodKolvo.setText(String.valueOf(p.getCount()));
-            ((MyHolder) holder).plus.setOnClickListener(new View.OnClickListener() {
+            counter = p.getCount();
+            ((MyHolder) holder).plus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    Integer a = p.getCount() + 1;
+                    counter++;
                     DataBaseHandler bd = new DataBaseHandler(context);
-                    bd.updateProd(new Products(p.getName(), a), p.getId());
+                    bd.updateProd(new Products(p.getName(), counter), p.getId());
+                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
                     Log.e("ccc", String.valueOf(p.getCount()));
+
+                }
+            });
+            ((MyHolder) holder).minus.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if (counter > 1) {
+                        counter--;
+                        DataBaseHandler bd = new DataBaseHandler(context);
+                        bd.updateProd(new Products(p.getName(), counter), p.getId());
+                        ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter));
+                        Log.e("ddd", String.valueOf(p.getCount()));
+                    }
 
                 }
             });

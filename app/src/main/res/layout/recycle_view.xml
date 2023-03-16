@@ -33,6 +33,7 @@ android:background="@color/white">
         android:layout_below="@+id/list"
         android:iconifiedByDefault="false"
         android:queryHint="Поиск в списке"
+        android:textColorHint="@color/white"
         android:background="@drawable/layout_bg"/>
 
 
@@ -45,7 +46,6 @@ android:background="@color/white">
         android:layout_weight="1"
         android:padding="12dp"
         app:layoutManager="LinearLayoutManager" />
-
 
 
     <com.google.android.material.button.MaterialButton
