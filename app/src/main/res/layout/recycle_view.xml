@@ -46,6 +46,8 @@ android:background="@color/white">
         android:padding="12dp"
         app:layoutManager="LinearLayoutManager" />
 
+
+
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="60dp"
@@ -65,12 +67,16 @@ android:background="@color/white">
     <com.google.android.material.button.MaterialButton
         android:id="@+id/clear"
         style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="69dp"
-        android:layout_height="60dp"
+        android:layout_width="389dp"
+        android:layout_height="61dp"
+        android:layout_alignStart="@+id/scan"
+        android:layout_alignEnd="@+id/add"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="150dp"
-        android:layout_marginBottom="17dp"
+        android:layout_marginStart="-33dp"
+        android:layout_marginEnd="-24dp"
+        android:layout_marginRight="-4dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/transparent"
         android:gravity="center_vertical"
         app:icon="@drawable/clear"
