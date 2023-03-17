@@ -36,15 +36,16 @@ public class RootActivity extends AppCompatActivity {
     private static final int REQUEST_TAKE_PHOTO = 1;
     ProductRecyclerAdapter adapter;
     private StateViewModel mViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycle_view);
 
         SearchView sv = (SearchView) findViewById(R.id.search);
-        MaterialButton buttAdd= (MaterialButton) findViewById(R.id.add);
-        MaterialButton buttScan= (MaterialButton) findViewById(R.id.scan);
-        MaterialButton buttClear= (MaterialButton) findViewById(R.id.clear);
+        MaterialButton buttAdd = (MaterialButton) findViewById(R.id.add);
+        MaterialButton buttScan = (MaterialButton) findViewById(R.id.scan);
+        MaterialButton buttClear = (MaterialButton) findViewById(R.id.clear);
         DataBaseHandler dataBaseHandler = new DataBaseHandler(this);
 
         DataBaseHandler bd = new DataBaseHandler(this);
@@ -106,8 +107,8 @@ public class RootActivity extends AppCompatActivity {
 
                 ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
                 ArrayList<Products> searchList = new ArrayList<>();
-                for (Products product : productsList){
-                    if (product.getName().toLowerCase().contains(newText.toLowerCase())){
+                for (Products product : productsList) {
+                    if (product.getName().toLowerCase().contains(newText.toLowerCase())) {
                         searchList.add(product);
                     }
                 }
@@ -144,12 +145,12 @@ public class RootActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == NORM){Bundle extras = data.getExtras();
+        if (requestCode == NORM) {
+            Bundle extras = data.getExtras();
 //            Bitmap thumbnailBitmap = (Bitmap) extras.get("data");
 //            Intent intent = new Intent(this, PhotoViewerActivity.class);
 //            intent.putExtra("BitmapImage", thumbnailBitmap);
@@ -172,7 +173,8 @@ public class RootActivity extends AppCompatActivity {
         Intent intent = new Intent(RootActivity.this, PhotoViewerActivity.class);
         startActivity(intent);
     }
-    public void clear(){
+
+    public void clear() {
 
     }
 
@@ -202,9 +204,15 @@ public class RootActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     @SuppressLint("NotifyDataSetChanged")
-    public void updateAdapter()
-    {
+    public void updateAdapter() {
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        updateAdapter();
     }
 }

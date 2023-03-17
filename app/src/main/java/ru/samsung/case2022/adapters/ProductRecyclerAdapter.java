@@ -69,7 +69,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        try {
+       // try {
             Products p = this.products.get(position);
             final int[] counter = {p.getCount()};
             ((MyHolder) holder).productName.setText(p.getName());
@@ -80,7 +80,9 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     counter[0]++;
                     DataBaseHandler bd = new DataBaseHandler(context);
                     bd.updateProd(new Products(p.getName(), counter[0]), p.getId());
-                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(counter[0]));
+                    //((MyHolder) holder).prodKolvo.setText(String.valueOf(counter[0]));
+                    ((MyHolder) holder).prodKolvo.setText(String.valueOf(bd.getProd(p.getId()).getCount()));
+                    counter[0] = bd.getProd(p.getId()).getCount();
                     Log.e("ccc", String.valueOf(p.getCount()));
 
                 }
@@ -88,7 +90,7 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             ((MyHolder) holder).minus.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    if (counter[0] > 1) {
+                    if (counter[0]> 1) {
                         counter[0]--;
                         DataBaseHandler bd = new DataBaseHandler(context);
                         bd.updateProd(new Products(p.getName(), counter[0]), p.getId());
@@ -107,9 +109,9 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                     context.startActivity(intent);
                 }
             });
-        } catch (Exception e) {
+        //} //catch (Exception e) {
 
-        }
+       // }
 
 
     }
@@ -119,5 +121,4 @@ public class ProductRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public int getItemCount() {
         return products.size();
     }
-
 }
