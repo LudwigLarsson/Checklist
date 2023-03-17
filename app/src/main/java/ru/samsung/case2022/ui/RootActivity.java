@@ -35,6 +35,7 @@ public class RootActivity extends AppCompatActivity {
     private static final int NORM = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     ProductRecyclerAdapter adapter;
+    ArrayList<Products> searchList;
     private StateViewModel mViewModel;
 
     @Override
@@ -106,7 +107,7 @@ public class RootActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
 
                 ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
-                ArrayList<Products> searchList = new ArrayList<>();
+                searchList = new ArrayList<>();
                 for (Products product : productsList) {
                     if (product.getName().toLowerCase().contains(newText.toLowerCase())) {
                         searchList.add(product);
@@ -138,6 +139,12 @@ public class RootActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dataBaseHandler.deleteAll();
+                if (products != null) {
+                    products.clear();
+                }
+                if (searchList != null) {
+                    searchList.clear();
+                }
                 adapter.notifyDataSetChanged();
             }
         });
