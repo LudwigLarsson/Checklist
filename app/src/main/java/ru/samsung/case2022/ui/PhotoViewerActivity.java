@@ -151,7 +151,7 @@ public class PhotoViewerActivity extends AppCompatActivity {
         finish();
     }
 
-    private TensorImage loadImage(final Bitmap bitmap) {
+    /*private TensorImage loadImage(final Bitmap bitmap) {
         // Loads bitmap into a TensorImage.
         inputImageBuffer.load(bitmap);
 
@@ -182,9 +182,9 @@ public class PhotoViewerActivity extends AppCompatActivity {
 
     private TensorOperator getPostprocessNormalizeOp() {
         return new NormalizeOp(PROBABILITY_MEAN, PROBABILITY_STD);
-    }
+    }*/
 
-    private void showresult() {
+    /*private void showresult() {
 
         try {
             labels = FileUtil.loadLabels(this, "newdict.txt");
@@ -201,5 +201,5 @@ public class PhotoViewerActivity extends AppCompatActivity {
                 classitext.setText(entry.getKey());
             }
         }
-    }
+    }*/
 }

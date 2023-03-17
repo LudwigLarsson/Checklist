@@ -16,6 +16,7 @@ import java.util.List;
 import ru.samsung.case2022.data.DataBaseHandler;
 import ru.samsung.case2022.model.Products;
 import ru.samsung.case2022.ui.EditProductActivity;
+import ru.samsung.case2022.ui.RussianDictionary;
 import ru.samsung.case2022.utils.ImageClassifierHelper;
 import ru.samsung.case2022.utils.ProductDeleteListener;
 import ru.samsung.case2022.utils.Util;
@@ -31,6 +32,7 @@ public class Classifiers {
 
     private volatile int counter;
     private final VotingClassifier votingClassifier = new VotingClassifier(3);
+    private final RussianDictionary russianDictionary = new RussianDictionary();
     public ArrayList<HashMap<String, Float>> arrayList1 = new ArrayList<>();
 
     public void recognize(Context context){
@@ -135,7 +137,7 @@ public class Classifiers {
     public void checkReadyToVoteAndSummarize(){
         if (this.counter==3){
             this.counter = 0;
-            label = votingClassifier.summarizeFloats(arrayList1);
+            label = russianDictionary.putWord(votingClassifier.summarizeFloats(arrayList1));
         }
     }
 
