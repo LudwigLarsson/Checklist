@@ -220,6 +220,11 @@ public class RootActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        updateAdapter();
+        DataBaseHandler bd = new DataBaseHandler(this);
+        ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
+        RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
+        ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(RootActivity.this, productsList);
+        rv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }

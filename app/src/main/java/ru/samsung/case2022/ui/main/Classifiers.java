@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.camera.core.ImageProxy;
 
 import org.tensorflow.lite.task.vision.classifier.Classifications;
 
@@ -14,12 +13,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import ru.samsung.case2022.data.DataBaseHandler;
-import ru.samsung.case2022.model.Products;
-import ru.samsung.case2022.ui.EditProductActivity;
-import ru.samsung.case2022.ui.RussianDictionary;
+import ru.samsung.case2022.utils.RussianDictionary;
 import ru.samsung.case2022.utils.ImageClassifierHelper;
 import ru.samsung.case2022.utils.ProductDeleteListener;
-import ru.samsung.case2022.utils.Util;
 import ru.samsung.case2022.utils.VotingClassifier;
 
 public class Classifiers {
