@@ -145,6 +145,7 @@ public class RootActivity extends AppCompatActivity {
                 if (searchList != null) {
                     searchList.clear();
                 }
+                ScreenUpdate();
                 adapter.notifyDataSetChanged();
             }
         });
@@ -220,11 +221,14 @@ public class RootActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        DataBaseHandler bd = new DataBaseHandler(this);
+        ScreenUpdate();
+        adapter.notifyDataSetChanged();
+    }
+    public void ScreenUpdate(){
+        DataBaseHandler bd = new DataBaseHandler(RootActivity.this);
         ArrayList<Products> productsList = (ArrayList<Products>) bd.getAllProd();
         RecyclerView rv = (RecyclerView) findViewById(R.id.recycler);
         ProductRecyclerAdapter adapter = new ProductRecyclerAdapter(RootActivity.this, productsList);
         rv.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
     }
 }
